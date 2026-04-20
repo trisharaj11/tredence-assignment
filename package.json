@@ -1,0 +1,25 @@
+{
+  "name": "hr-workflow-designer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@xyflow/react": "^12.3.6",
+    "zustand": "^5.0.3",
+    "lucide-react": "^0.469.0",
+    "clsx": "^2.1.1",
+    "uuid": "^11.0.3",
+    "date-fns": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.5"
+  }
+}

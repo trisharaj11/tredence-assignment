@@ -1,0 +1,181 @@
+:root {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f8f7;
+  --bg-tertiary: #f0efec;
+  --bg-canvas: #fafaf9;
+  --bg-hover: #f2f1ee;
+  --bg-active: #eae9e4;
+
+  --text-primary: #1a1916;
+  --text-secondary: #6b6860;
+  --text-tertiary: #a09d96;
+  --text-inverse: #ffffff;
+
+  --border-default: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+
+  --accent: #e8633a;
+  --accent-hover: #d4542c;
+  --accent-light: #fdf0eb;
+  --accent-text: #b84420;
+
+  --success: #1a7a4a;
+  --success-bg: #eaf6f0;
+  --success-border: #a8dfbf;
+
+  --warning: #8a5c00;
+  --warning-bg: #fef8ec;
+  --warning-border: #f5d67e;
+
+  --error: #c0392b;
+  --error-bg: #fdf0ee;
+  --error-border: #f5b8b2;
+
+  --info: #1a5fa6;
+  --info-bg: #eaf2fd;
+  --info-border: #a8cbf0;
+
+  --node-start: #3b82f6;
+  --node-start-bg: #eff6ff;
+  --node-task: #f59e0b;
+  --node-task-bg: #fffbeb;
+  --node-approval: #10b981;
+  --node-approval-bg: #ecfdf5;
+  --node-automated: #8b5cf6;
+  --node-automated-bg: #f5f3ff;
+  --node-end: #e8633a;
+  --node-end-bg: #fdf0eb;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+  --shadow-node: 0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-node-selected: 0 4px 16px rgba(232,99,58,0.2), 0 0 0 2px #e8633a;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --sidebar-width: 220px;
+  --rightpanel-width: 280px;
+  --toolbar-height: 48px;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #1c1b19;
+  --bg-secondary: #242320;
+  --bg-tertiary: #2c2b28;
+  --bg-canvas: #1a1918;
+  --bg-hover: #302f2c;
+  --bg-active: #3a3936;
+
+  --text-primary: #f0ede8;
+  --text-secondary: #9e9b94;
+  --text-tertiary: #6b6860;
+  --text-inverse: #1a1916;
+
+  --border-default: rgba(255,255,255,0.07);
+  --border-strong: rgba(255,255,255,0.12);
+
+  --accent: #e8633a;
+  --accent-hover: #f07248;
+  --accent-light: #2a1a12;
+  --accent-text: #f09070;
+
+  --success: #34d47a;
+  --success-bg: #0d2018;
+  --success-border: #1a5432;
+
+  --warning: #f5d67e;
+  --warning-bg: #201800;
+  --warning-border: #6a4800;
+
+  --error: #f07070;
+  --error-bg: #200d0d;
+  --error-border: #6a1f1f;
+
+  --info: #7ab8f5;
+  --info-bg: #0d1c2a;
+  --info-border: #1a4266;
+
+  --node-start: #60a5fa;
+  --node-start-bg: #1a2840;
+  --node-task: #fbbf24;
+  --node-task-bg: #251c08;
+  --node-approval: #34d399;
+  --node-approval-bg: #0d2018;
+  --node-automated: #a78bfa;
+  --node-automated-bg: #1e1630;
+  --node-end: #f07248;
+  --node-end-bg: #2a1a12;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-node: 0 2px 8px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-node-selected: 0 4px 16px rgba(232,99,58,0.3), 0 0 0 2px #e8633a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; overflow: hidden; }
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* React Flow */
+.react-flow__edge-path { stroke: var(--text-tertiary) !important; stroke-width: 2 !important; }
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path { stroke: var(--accent) !important; }
+.react-flow__arrowhead path { fill: var(--text-tertiary) !important; }
+.react-flow__handle {
+  width: 10px !important; height: 10px !important;
+  border: 2px solid var(--bg-primary) !important;
+  background: var(--text-tertiary) !important;
+  transition: background 150ms, transform 150ms;
+}
+.react-flow__handle:hover { background: var(--accent) !important; transform: scale(1.3); }
+.react-flow__controls {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: var(--bg-primary) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+  fill: var(--text-secondary) !important;
+  width: 28px !important; height: 28px !important;
+}
+.react-flow__controls-button:hover { background: var(--bg-hover) !important; fill: var(--text-primary) !important; }
+.react-flow__minimap {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.react-flow__panel { margin: 12px !important; }
+.react-flow__background pattern circle { fill: var(--border-strong) !important; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.fade-in { animation: fadeIn 200ms ease forwards; }
+.slide-right { animation: slideInRight 200ms ease forwards; }
+.pulse { animation: pulse 2s infinite; }
