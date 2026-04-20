@@ -1,70 +1,150 @@
-# HR Workflow Designer
+A premium, high-performance HR Workflow Automation builder. **ConnectHR** empowers HR administrators to design, simulate, and deploy complex organizational processes through an intuitive, drag-and-drop "Cyber-Glass" interface.
 
-A full-featured HR Workflow Designer built with React + React Flow for Tredence Analytics.
+---
+Live:   https://tredence-assignment-gamma.vercel.app/
 
-## Features
 
-- **Visual Canvas** — Drag-and-drop workflow builder powered by React Flow
-- **5 Node Types** — Start, Task, Approval, Automated Step, End
-- **Node Configuration** — Rich edit forms per node type with dynamic fields
-- **Mock API Layer** — GET /automations and POST /simulate endpoints
-- **Sandbox Panel** — Run simulation with step-by-step execution log and validation
-- **Dashboard** — View, search, filter, create, duplicate, archive, delete workflows
-- **Light / Dark / System** theme with live toggle
-- **Export / Import** workflows as JSON
-- **Persistent state** via localStorage (Zustand persist)
+## ✨ Key Features
 
-## Tech Stack
+### 🎨 Premium "Cyber-Glass" UI
+*   **Immersive Design**: A state-of-the-art interface featuring glassmorphism, smooth micro-animations, and dynamic depth effects.
+*   **High-Contrast Themes**: Professionally curated light and dark modes with a "Blueprint" aesthetic for clear workflow visualization.
 
-- React 18 (JavaScript / JSX — no TypeScript)
-- Vite
-- @xyflow/react (React Flow v12)
-- Zustand (state management)
-- lucide-react (icons)
-- date-fns
+### 🛠️ Advanced Workflow Canvas
+*   **Intuitive Drag & Drop**: Powered by `reactflow`, allowing seamless node placement and connection.
+*   **Smart Node Library**:
+    *   🏁 **Start Node**: Entry point for every workflow.
+    *   📝 **Task Node**: Assignable actions with detailed metadata.
+    *   ⚖️ **Approval Node**: Branching logic for multi-stage decision making.
+    *   🤖 **Automated Step**: Integration points for system-level actions.
+    *   🏁 **End Node**: Defines the successful completion of a process.
 
-## Getting Started
+### 🧪 Real-Time Simulation Sandbox
+*   **Step-by-Step Execution**: Visualize the workflow logic path before deployment.
+*   **Validation Engine**: Automatic detection of orphaned nodes, cycles, and missing start/end points.
+*   **Execution Logs**: Real-time feedback on the status of each simulated step.
 
-```bash
-npm install
-npm run dev
+### 📊 Performance Dashboard
+*   **Data Visualization**: High-level overview of workflow metrics and status.
+*   **Search & Filter**: Effortlessly manage large libraries of automation templates.
+*   **Workflow Lifecycle**: Create, duplicate, archive, and delete with instant visual feedback.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+| :--- | :--- |
+| **React 19** | Core UI library for component-based architecture. |
+| **React Flow** | Industrial-grade node-based canvas engine. |
+| **Zustand** | Centralized state management with persistence. |
+| **Vanilla CSS** | High-performance, bespoke styling with CSS Custom Properties. |
+| **Lucide React** | Consistent, premium iconography. |
+| **Vite** | Next-generation frontend tooling for lightning-fast builds. |
+
+---
+
+## 🏗️ Architecture
+
+The project follows a modular, feature-based architecture designed for scalability and maintainability.
+
+### System Flow Diagram
+
+```mermaid
+graph TD
+    UI[User Interface] --> Store[Zustand Global Store]
+    Store --> Canvas[React Flow Canvas]
+    Store --> Panel[Properties Panel]
+    Store --> Sandbox[Simulation Engine]
+    
+    Sandbox --> MockAPI[Mock API Layer]
+    MockAPI -.-> Store
+    
+    subgraph "State Management"
+    Store
+    end
+    
+    subgraph "Components"
+    Canvas
+    Panel
+    Sandbox
+    end
 ```
 
-Open http://localhost:5173
+### 🧠 Simulation Engine Logic
+The sandbox utilizes a custom traversal algorithm to validate and execute workflows:
+- **Cycle Detection**: Prevents infinite loops by tracking visited nodes during traversal.
+- **Path Validation**: Ensures every workflow starts with a `Start Node` and ideally terminates at an `End Node`.
+- **Status Propagation**: Real-time status updates (`idle` → `processing` → `completed`) are pushed back to the nodes for visual feedback during simulation.
+- **Async Mocking**: Simulated network latency and API responses via a Promise-based layer in `mockApi.js`.
 
-## Project Structure
+### 🧩 Custom Node Library
+Each node is a specialized React component providing unique functionality:
+- **Start/End Nodes**: Optimized for entry and exit points with specific connection constraints.
+- **Task & Approval Nodes**: Feature-rich configurations including assignment logic, priority levels, and branching paths.
+- **Automated Steps**: Placeholder for third-party integrations (Email, Slack, Jira) with dynamic parameter mapping.
 
-```
+### 🔄 State Persistence & History
+- **Zustand + Persist**: The entire workspace state (nodes, edges, settings) is automatically persisted to `localStorage`.
+- **Undo/Redo System**: A custom history stack allows users to revert or replay any change on the canvas with standard keyboard shortcuts.
+
+---
+
+## 📁 Directory Structure
+
+```text
 src/
-  api/          mockApi.js — GET /automations, POST /simulate
-  components/
-    canvas/     WorkflowCanvas, NodesSidebar, SandboxPanel
-    dashboard/  Dashboard (list view, CRUD)
-    forms/      NodeFormPanel (per-node edit forms)
-    layout/     AppLayout, sidebar, theme switcher
-    nodes/      WorkflowNode (custom React Flow node)
-    ui/         Button, Input, Select, Toggle, Modal, Badge
-  store/        index.js — Zustand store with persist
-  styles/       globals.css — CSS variables, dark mode, React Flow overrides
-  App.jsx
-  main.jsx
+├── api/             # Mock API services (Simulate/Fetch)
+├── components/      # Feature-specific components
+│   ├── Canvas/      # Workflow builder & Custom Nodes
+│   ├── Dashboard/   # Analytics & Workflow management
+│   ├── Layout/      # Global navigation & Shell
+│   ├── Sandbox/     # Simulation & Execution logs
+│   └── Settings/    # App-wide configuration
+├── store/           # Centralized Zustand stores
+└── styles/          # Global tokens & Design System
 ```
 
-## Architecture Decisions
+---
 
-- **Zustand** for global state — clean, minimal boilerplate, built-in persist middleware
-- **CSS Variables** for theming — zero JS overhead, instant dark/light/system switching
-- **React Flow** handles all canvas logic; app state owns node data independently
-- **Mock API** uses async functions with artificial delay to simulate real API behaviour
-- **Component decomposition** — each node type form is its own component, easy to extend
-- **No TypeScript** — pure JS/JSX as requested
+## 🚀 Getting Started
 
-## What I'd Add With More Time
+### Prerequisites
+*   Node.js (v18 or higher)
+*   npm or yarn
 
-- Undo/Redo stack
-- Auto-layout with dagre
-- Node version history
-- Validation errors shown visually on nodes
-- Real backend with Node.js + PostgreSQL
-- Authentication with JWT
-- Collaborative editing via WebSockets
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/trisharaj11/hr-workflow-designer.git
+    cd hr-workflow-designer
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run in development mode**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production**
+    ```bash
+    npm run build
+    ```
+
+---
+
+## 🧠 Design Philosophy
+
+ConnectHR is built on the principle of **"Visual Intelligence"**. By abstracting complex HR logic into a visual node-based system, we bridge the gap between technical requirements and administrative ease.
+
+*   **Reliability**: State is persisted across sessions, ensuring no work is lost.
+*   **Flexibility**: The system is designed to be extensible, allowing for new node types and integration points.
+*   **Performance**: Minimal re-renders through targeted Zustand state updates and optimized CSS transitions.
+
+---
+
