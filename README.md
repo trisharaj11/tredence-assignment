@@ -88,24 +88,6 @@ Each node is a specialized React component providing unique functionality:
 - **Zustand + Persist**: The entire workspace state (nodes, edges, settings) is automatically persisted to `localStorage`.
 - **Undo/Redo System**: A custom history stack allows users to revert or replay any change on the canvas with standard keyboard shortcuts.
 
----
-
-## 📁 Directory Structure
-
-```text
-src/
-├── api/             # Mock API services (Simulate/Fetch)
-├── components/      # Feature-specific components
-│   ├── Canvas/      # Workflow builder & Custom Nodes
-│   ├── Dashboard/   # Analytics & Workflow management
-│   ├── Layout/      # Global navigation & Shell
-│   ├── Sandbox/     # Simulation & Execution logs
-│   └── Settings/    # App-wide configuration
-├── store/           # Centralized Zustand stores
-└── styles/          # Global tokens & Design System
-```
-
----
 
 ## 🚀 Getting Started
 
