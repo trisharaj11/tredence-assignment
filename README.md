@@ -1,4 +1,4 @@
-# 🚀 HR Workflow Designer (ConnectHR)
+# 🚀 HR Workflow Designer
 
 A modern, node-based workflow automation tool designed for HR processes like onboarding, approvals, and task management.
 Users can visually design workflows using a drag-and-drop interface and simulate execution in real-time.
