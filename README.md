@@ -104,24 +104,6 @@ graph TD
 
 ---
 
-## 🏗️ Project Structure
-
-```
-src/
- ├── components/
- │    ├── WorkflowCanvas.jsx
- │    ├── SandboxPanel.jsx
- │    └── Nodes/
- ├── store/
- │    └── index.js
- ├── api/
- │    └── mockApi.js
- ├── App.jsx
- └── main.jsx
-```
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone Repository
