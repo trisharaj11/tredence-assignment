@@ -1,132 +1,180 @@
-A premium, high-performance HR Workflow Automation builder. **ConnectHR** empowers HR administrators to design, simulate, and deploy complex organizational processes through an intuitive, drag-and-drop "Cyber-Glass" interface.
+# 🚀 HR Workflow Designer (ConnectHR)
+
+A modern, node-based workflow automation tool designed for HR processes like onboarding, approvals, and task management.
+Users can visually design workflows using a drag-and-drop interface and simulate execution in real-time.
+
+🔗 **Live Demo:** https://tredence-assignment-gamma.vercel.app/
 
 ---
-Live:   https://tredence-assignment-gamma.vercel.app/
 
+## ✨ Features
 
-## ✨ Key Features
+### 🎨 Interactive UI
 
-### 🎨 Premium "Cyber-Glass" UI
-*   **Immersive Design**: A state-of-the-art interface featuring glassmorphism, smooth micro-animations, and dynamic depth effects.
-*   **High-Contrast Themes**: Professionally curated light and dark modes with a "Blueprint" aesthetic for clear workflow visualization.
+* Clean and modern **glassmorphism-based design**
+* Light/Dark theme support
+* Smooth animations and transitions
 
-### 🛠️ Advanced Workflow Canvas
-*   **Intuitive Drag & Drop**: Powered by `reactflow`, allowing seamless node placement and connection.
-*   **Smart Node Library**:
-    *   🏁 **Start Node**: Entry point for every workflow.
-    *   📝 **Task Node**: Assignable actions with detailed metadata.
-    *   ⚖️ **Approval Node**: Branching logic for multi-stage decision making.
-    *   🤖 **Automated Step**: Integration points for system-level actions.
-    *   🏁 **End Node**: Defines the successful completion of a process.
+---
 
-### 🧪 Real-Time Simulation Sandbox
-*   **Step-by-Step Execution**: Visualize the workflow logic path before deployment.
-*   **Validation Engine**: Automatic detection of orphaned nodes, cycles, and missing start/end points.
-*   **Execution Logs**: Real-time feedback on the status of each simulated step.
+### 🧩 Workflow Builder (Core Feature)
 
-### 📊 Performance Dashboard
-*   **Data Visualization**: High-level overview of workflow metrics and status.
-*   **Search & Filter**: Effortlessly manage large libraries of automation templates.
-*   **Workflow Lifecycle**: Create, duplicate, archive, and delete with instant visual feedback.
+* Drag & drop nodes on canvas
+* Connect nodes to define process flow
+* Multiple node types:
+
+  * 🟢 Start Node
+  * 📝 Task Node
+  * ⚖️ Approval Node
+  * 🤖 Automated Node
+  * 🔴 End Node
+
+---
+
+### 🧪 Simulation Engine
+
+* Run workflows before deployment
+* Detect:
+
+  * Missing Start/End nodes
+  * Disconnected nodes
+  * Invalid flows
+* Shows step-by-step execution logs
+
+---
+
+### 📊 Dashboard
+
+* View all workflows
+* Create, delete, duplicate workflows
+* Manage workflow lifecycle
+
+---
+
+### 💾 Persistence
+
+* Automatically saves workflows using **localStorage**
+* Data remains even after refresh
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-| :--- | :--- |
-| **React 19** | Core UI library for component-based architecture. |
-| **React Flow** | Industrial-grade node-based canvas engine. |
-| **Zustand** | Centralized state management with persistence. |
-| **Vanilla CSS** | High-performance, bespoke styling with CSS Custom Properties. |
-| **Lucide React** | Consistent, premium iconography. |
-| **Vite** | Next-generation frontend tooling for lightning-fast builds. |
+| Technology       | Why Used                                              |
+| ---------------- | ----------------------------------------------------- |
+| **React (Vite)** | Fast UI development with component-based architecture |
+| **React Flow**   | Handles node graph, drag-drop, and connections        |
+| **Zustand**      | Lightweight state management with minimal re-renders  |
+| **Vanilla CSS**  | Full control over styling and performance             |
+| **Lucide Icons** | Clean and consistent icons                            |
 
 ---
 
-## 🏗️ Architecture
-
-The project follows a modular, feature-based architecture designed for scalability and maintainability.
-
-### System Flow Diagram
+## 🔄 How It Works (Project Flow)
 
 ```mermaid
 graph TD
-    UI[User Interface] --> Store[Zustand Global Store]
-    Store --> Canvas[React Flow Canvas]
-    Store --> Panel[Properties Panel]
-    Store --> Sandbox[Simulation Engine]
-    
-    Sandbox --> MockAPI[Mock API Layer]
-    MockAPI -.-> Store
-    
-    subgraph "State Management"
-    Store
-    end
-    
-    subgraph "Components"
-    Canvas
-    Panel
-    Sandbox
-    end
+    A[User Action] --> B[React Components]
+    B --> C[Zustand Store]
+    C --> D[React Flow Canvas]
+    C --> E[Simulation Engine]
+    E --> F[Mock API Logic]
+    F --> C
 ```
 
-### 🧠 Simulation Engine Logic
-The sandbox utilizes a custom traversal algorithm to validate and execute workflows:
-- **Cycle Detection**: Prevents infinite loops by tracking visited nodes during traversal.
-- **Path Validation**: Ensures every workflow starts with a `Start Node` and ideally terminates at an `End Node`.
-- **Status Propagation**: Real-time status updates (`idle` → `processing` → `completed`) are pushed back to the nodes for visual feedback during simulation.
-- **Async Mocking**: Simulated network latency and API responses via a Promise-based layer in `mockApi.js`.
+### Flow Explanation:
 
-### 🧩 Custom Node Library
-Each node is a specialized React component providing unique functionality:
-- **Start/End Nodes**: Optimized for entry and exit points with specific connection constraints.
-- **Task & Approval Nodes**: Feature-rich configurations including assignment logic, priority levels, and branching paths.
-- **Automated Steps**: Placeholder for third-party integrations (Email, Slack, Jira) with dynamic parameter mapping.
+1. User interacts with UI (drag node, connect nodes)
+2. State updates in Zustand store
+3. React Flow re-renders canvas
+4. On simulation:
 
-### 🔄 State Persistence & History
-- **Zustand + Persist**: The entire workspace state (nodes, edges, settings) is automatically persisted to `localStorage`.
-- **Undo/Redo System**: A custom history stack allows users to revert or replay any change on the canvas with standard keyboard shortcuts.
+   * Workflow is validated
+   * Graph is processed
+   * Execution logs are generated
 
+---
+
+## 🧠 Core Concepts Used
+
+* Graph-based workflow system (Nodes + Edges)
+* State-driven UI rendering
+* Topological traversal for execution flow
+* Local persistence using browser storage
+
+---
+
+## 🏗️ Project Structure
+
+```
+src/
+ ├── components/
+ │    ├── WorkflowCanvas.jsx
+ │    ├── SandboxPanel.jsx
+ │    └── Nodes/
+ ├── store/
+ │    └── index.js
+ ├── api/
+ │    └── mockApi.js
+ ├── App.jsx
+ └── main.jsx
+```
+
+---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-*   Node.js (v18 or higher)
-*   npm or yarn
+### 1. Clone Repository
 
-### Installation
+```bash
+git clone https://github.com/trisharaj11/tredence-assignment.git
+cd tredence-assignment
+```
 
-1.  **Clone the repository**
-    ```bash
-   git clone https://github.com/trisharaj11/tredence-assignment.git
-   cd tredence-assignment
-    ```
+### 2. Install Dependencies
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+```
 
-3.  **Run in development mode**
-    ```bash
-    npm run dev
-    ```
+### 3. Run Project
 
-4.  **Build for production**
-    ```bash
-    npm run build
-    ```
+```bash
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:5173/
+```
 
 ---
 
-## 🧠 Design Philosophy
+## 🎯 Key Highlights (For Interview)
 
-ConnectHR is built on the principle of **"Visual Intelligence"**. By abstracting complex HR logic into a visual node-based system, we bridge the gap between technical requirements and administrative ease.
-
-*   **Reliability**: State is persisted across sessions, ensuring no work is lost.
-*   **Flexibility**: The system is designed to be extensible, allowing for new node types and integration points.
-*   **Performance**: Minimal re-renders through targeted Zustand state updates and optimized CSS transitions.
+* Built a **visual workflow engine** using graph-based logic
+* Implemented **real-time simulation system**
+* Used **Zustand for optimized state management**
+* Designed scalable architecture without backend dependency
 
 ---
 
+## 🧠 Design Thinking
+
+This project focuses on simplifying complex HR processes into a **visual system**, making it easy for non-technical users to design workflows.
+
+---
+
+## 📌 Future Improvements
+
+* Backend integration (Node.js / Firebase)
+* Role-based access control
+* Workflow versioning
+* Real API integrations (Slack, Email)
+
+---
+
+## 👩‍💻 Author
+
+**Trisha Raj**
