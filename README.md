@@ -99,8 +99,8 @@ Each node is a specialized React component providing unique functionality:
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/trisharaj11/hr-workflow-designer.git
-    cd hr-workflow-designer
+   git clone https://github.com/trisharaj11/tredence-assignment.git
+   cd tredence-assignment
     ```
 
 2.  **Install dependencies**
